@@ -26,3 +26,7 @@ O NestJs tem uma opinião muito grande nos tipos de arquivos que criamos em noss
 Características do Nest:
 - Uso de decorators que são funções que adicionam comportamento em algo.
 - Inversão de dependência e Injeção de dependência.
+
+**Docker compose**
+
+O docker compose é essencial quando seu projeto depende de vários serviços como banco de dados, Kafka ou até ferramentas de CDN como Minio.
