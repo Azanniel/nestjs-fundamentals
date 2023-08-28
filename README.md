@@ -30,3 +30,14 @@ Características do Nest:
 **Docker compose**
 
 O docker compose é essencial quando seu projeto depende de vários serviços como banco de dados, Kafka ou até ferramentas de CDN como Minio.
+
+**O que são Pipes?**
+
+Um pipe é uma classe anotada com o `@Injectable()` decorador, que implementa a `PipeTransform` interface.
+
+Pipes têm dois casos de uso típicos:
+
+- transformação : transforma os dados de entrada na forma desejada (por exemplo, de string para inteiro)
+- validação : avalia os dados de entrada e, se válidos, simplesmente passa-os inalterados; caso contrário, lance uma exceção
+
+Em ambos os casos, os pipes operam sendo argumentos processados ​​por um manipulador de rotas do controlador. Nest interpõe um pipe logo antes de um método ser invocado, e o pipe recebe os argumentos destinados ao método e opera sobre eles. Qualquer operação de transformação ou validação ocorre nesse momento, após o qual o manipulador de rota é invocado com quaisquer argumentos (potencialmente) transformados.
