@@ -127,3 +127,11 @@ SWC é uma plataforma extensível baseada em Rust e pode ser usado tanto para co
 O ESBuild é um empacotador e minificador JavaScript 10-100x mais rápido do que as ferramentas existentes, escrito em Go.
 
 Um detalhe importante é que o SWC para os testes E2E se sai muito melhor nos casos desta aplicação, pois ele entende Decorators e o ESBuild não, logo ele é mais rápido. Sendo assim usar o ESBuild, que é o padrão do Vite e do Vitest, acaba deixando os testes um pouco mais lentos.
+
+**Sobre testes E2E**
+
+Quando trabalhamos com testes de ponta a ponta é necessário que eles estejam o mais próximo possível do ambiente real da aplicação, ou seja, quanto menos mocks ou comportamentos fictícios forem adicionados no código para pular algo, melhor, pois vai evitar falsos positivos ou falos negativos.
+
+Quando vamos testar uma rota é importante que estejamos fazendo o fluxo completo, desde bater no banco de dados com a informação quanto usando os serviços que o usuário usaria para acessar a rota.
+
+Uma das coisas que é importante é sempre ter um ambiente isolado para testes, para que não haja interações entre os testes.
