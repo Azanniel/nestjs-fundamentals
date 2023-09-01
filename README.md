@@ -1,10 +1,78 @@
-# NestJS Fundamentos
+<h4 align="center">
+  <img src=".github/nest.svg" />
+
+  <p>Fundamentos do NestJS + Clean Code</p>
+</h4>
 
 Aplicação para aprender os fundamentos do framework NestJS.
 
 O NestJS traz muitas opiniões e convenções sobre como construir as coisas dentro dele. Ele é ótimo quando você precisa de produtividade e não tem ninguém para guiar as escolhas técnicas. O NestJS permite que você estruture as pastas do projeto da maneira que quiser, mas traz preferências e recomendações para ferramentas como validação, mensageria, GraphQL, WebSocket e ORM.
 
-## Anotações importantes
+> ⚠️ Aplicação com finalidade de desenvolver minhas habilidades com NestJS
+
+## ✨ Tecnologias relevantes
+
+- [NestJS](https://docs.nestjs.com): Nest (NestJS) é uma estrutura para a construção de aplicativos Node.js do lado do servidor eficientes e escalonáveis.
+- [Zod](https://zod.dev): Zod é uma biblioteca de validação de dados para TypeScript.
+- [Passport](https://www.passportjs.org/): Passport é uma biblioteca de autenticação de usuários do lado do servidor.
+- [Passport JWT](https://www.passportjs.org/packages/passport-jwt/): Uma estratégia do Passport para autenticação com um JSON Web Token, este módulo permite autenticar endpoints usando um token web JSON.
+- [Prisma](https://www.prisma.io/): Prisma é uma biblioteca de persistência de banco de dados para Node.js
+
+## 🧑‍🏭 Executando a aplicação
+
+Levando em conta que o projeto já foi clonado e está com todas as dependências instaladas usando seu principal gerenciador de pacotes:
+
+```bash
+$ pnpm install
+```
+
+Adicione as variáveis de ambiente copiando o arquivo `.env.example` e renomeando para `.env`:
+
+```properties
+# Database
+DATABASE_URL="postgresql://postgres:docker@localhost:5432/nest-fundamentals?schema=public"
+
+# Auth
+JWT_PRIVATE_KEY=""
+JWT_PUBLIC_KEY=""
+
+# Application
+PORT=""
+```
+
+A estratégia de autenticação usada é JWT com algorítimo RSA-256. Logo você deve gerar as chaves pública e privada do algoritmo e convertê-las para Base64.
+
+```bash
+$ openssl genrsa -out private.pem 2048
+$ openssl rsa -in private.pem -pubout -out public.pem
+
+$ base64 private.pem
+$ base64 public.pem
+```
+
+Usando o docker-compose inicie os serviços necessários para executar a aplicação com:
+
+```bash
+$ docker-compose up -d
+```
+
+Não esqueça de rodar as migrações:
+
+```bash
+$ pnpm prisma migrate dev
+```
+
+Após isso basta iniciar a aplicação (desenvolvimento):
+
+```bash
+$ pnpm run start:dev
+```
+
+## 🦉 Requisições
+
+Para testar as requisições da aplicação estou usando a extensão do VSCode chamada [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) e com ela criei um arquivo chamado `client.http` na raiz do projeto onde estão listadas todas as rotas da aplicação.
+
+## 📃 Anotações importantes
 
 **1. Qual a diferença entre o NestJS e o Express/Fastify?**
 
