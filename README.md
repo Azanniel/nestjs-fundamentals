@@ -119,3 +119,11 @@ A diferença entre a autenticação JWT com algoritmo RSA-256 e outras formas de
 A principal vantagem da autenticação JWT com algoritmo RSA-256 é a capacidade de verificar a autenticidade do token sem a necessidade de compartilhar uma chave secreta entre o emissor e o receptor. Isso torna mais seguro e escalável em cenários onde há múltiplos emissores e receptores envolvidos.
 
 No entanto, a autenticação JWT com algoritmo RSA-256 também tem algumas desvantagens. É mais computacionalmente intensiva do que a autenticação JWT com algoritmo HMAC, devido ao uso de criptografia assimétrica. Além disso, a gestão das chaves privadas e públicas pode ser mais complexa em comparação com o uso de uma única chave compartilhada.
+
+**O que é o SWC? Qual a diferença entre o SWC e o ESBuild?**
+
+SWC é uma plataforma extensível baseada em Rust e pode ser usado tanto para compilação quanto para agrupamento. Para compilação, são necessários arquivos JavaScript/TypeScript usando recursos JavaScript modernos e gera código válido que é compatível com todos os principais navegadores.
+
+O ESBuild é um empacotador e minificador JavaScript 10-100x mais rápido do que as ferramentas existentes, escrito em Go.
+
+Um detalhe importante é que o SWC para os testes E2E se sai muito melhor nos casos desta aplicação, pois ele entende Decorators e o ESBuild não, logo ele é mais rápido. Sendo assim usar o ESBuild, que é o padrão do Vite e do Vitest, acaba deixando os testes um pouco mais lentos.
